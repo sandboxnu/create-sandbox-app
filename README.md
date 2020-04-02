@@ -1,6 +1,3 @@
-# create-sandbox-app
-Set up a full stack web app in one command. CI/CD hooks + AWS deploy included.
-
 ## Goals
 - One command.
 - Convention over configuration.
@@ -10,7 +7,7 @@ Set up a full stack web app in one command. CI/CD hooks + AWS deploy included.
 - Monorepo
 - Express backend
 - React frontend
-- Typescript shared across frontend/backend
+- Typescript across project and to document API
 - Postgres w/dev docker installation
 - Terraform configuration
 - Eslint+prettier+husky linting
