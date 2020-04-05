@@ -10,6 +10,7 @@
 - Typescript across project and to document API
 - Postgres w/dev docker installation
 - Terraform configuration
+- Deploy to AWS (ECS + RDS)
 - Eslint+prettier+husky linting
 - Github actions CI/CD
 
