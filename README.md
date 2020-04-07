@@ -1,5 +1,5 @@
 ## Goals
-- One command.
+- One command to setup, another to deploy.
 - Convention over configuration.
 - Well documented steps.
 
