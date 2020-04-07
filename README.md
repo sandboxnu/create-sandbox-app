@@ -22,3 +22,4 @@ We will do our best to add a few options, but only if it adds support for novel 
 - Worker nodes
 - Database choices (Mongo, Elasticsearch)
 - Server-side rendering
+- Generator script (like rails generate)
