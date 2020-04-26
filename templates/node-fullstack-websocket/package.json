@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/socket.io": "^2.1.4",
     "next": "9.3.5",
     "node-fetch": "^2.6.0",
     "react": "16.13.1",
