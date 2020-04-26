@@ -7,7 +7,7 @@ import { createServer } from "http";
 import { parse } from "url";
 import next from "next";
 import socketIO from "socket.io";
-import { bindSocketIO } from "./bind";
+import { bindSocketIO } from "./bindSocketIO";
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
