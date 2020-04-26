@@ -25,7 +25,6 @@ export default function Home({ club }: HomeProps) {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div>Server side rendered:</div>
       <div>
         The club {club.name} has a {club.rating} rating
@@ -38,8 +37,10 @@ export default function Home({ club }: HomeProps) {
           : "loading..."}
       </div>
       <br />
+      Websocket Demo:
+      <br />
       <WebsocketDemo />
-      Try opening more browser windows!
+      Try opening and closing this page in more tabs.
     </div>
   );
 }

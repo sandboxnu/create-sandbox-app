@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc --project tsconfig.server.json",
-    "start": "NODE_ENV=production node dist/server.js"
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "@types/socket.io": "^2.1.4",
