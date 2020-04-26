@@ -3,13 +3,16 @@ import { GetServerSideProps } from "next";
 import { Club } from "./api/club";
 import fetch from "node-fetch";
 import { useEffect, useState } from "react";
+import WebsocketDemo from "../components/WebsocketDemo";
 
 interface HomeProps {
   club: Club;
 }
+// Plain old React functional component.
 export default function Home({ club }: HomeProps) {
   const [other, setOther] = useState<Club | false>(false);
   useEffect(() => {
+    // Runs on client sid
     fetch("http://localhost:3000/api/club")
       .then((r) => r.json())
       .then((o) => {
@@ -17,7 +20,7 @@ export default function Home({ club }: HomeProps) {
       });
   }, []);
   return (
-    <div className="container">
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -27,12 +30,16 @@ export default function Home({ club }: HomeProps) {
       <div>
         The club {club.name} has a {club.rating} rating
       </div>
+      <br />
       <div>Client side fetch:</div>
-      {other && (
-        <div>
-          The club {other.name} has a {other.rating} rating
-        </div>
-      )}
+      <div>
+        {other
+          ? `The club ${other.name} has a ${other.rating} rating`
+          : "loading..."}
+      </div>
+      <br />
+      <WebsocketDemo />
+      Try opening more browser windows!
     </div>
   );
 }

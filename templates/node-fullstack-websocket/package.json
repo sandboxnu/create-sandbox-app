@@ -2,14 +2,16 @@
   "name": "node-fullstack-websocket",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "nodemon",
+    "build": "next build && tsc --project tsconfig.server.json",
+    "start": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
     "@types/socket.io": "^2.1.4",
+    "@types/socket.io-client": "^1.4.32",
     "next": "9.3.5",
     "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "socket.io": "^2.3.0",
