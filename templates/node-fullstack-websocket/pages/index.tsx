@@ -15,7 +15,7 @@ export default function Home({ club }: HomeProps) {
     // Runs on client sid
     fetch("http://localhost:3000/api/club")
       .then((r) => r.json())
-      .then((o) => {
+      .then((o: Club) => {
         setOther(o);
       });
   }, []);
