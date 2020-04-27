@@ -1,14 +1,10 @@
-import { Club as ClubModel } from "../entity/Club";
+import { ClubModel } from "../entity/ClubModel";
 import { Router, Response } from 'express';
-
-export interface Club {
-  name: string
-  rating: number,
-}
+import { Club } from '../../types/api';
 
 var router = Router()
 
-router.get('/', async (req, res: Response<Club>, next) => {
+router.get('/', async (req, res: Response<Club>) => {
   let club = new ClubModel();
   club.name = "Scout"
   club.rating = 10

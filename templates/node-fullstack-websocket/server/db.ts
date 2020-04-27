@@ -1,5 +1,5 @@
 import { createConnection, Connection } from "typeorm";
-import { Club } from "./entity/Club";
+import { ClubModel } from "./entity/ClubModel";
 import path from "path";
 
 /** singleton */

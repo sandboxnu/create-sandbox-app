@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import fetch from "node-fetch";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
-import { Club } from "../server/api/club";
+import { Club } from "../types/api";
 
 interface HomeProps {
   club: Club;
