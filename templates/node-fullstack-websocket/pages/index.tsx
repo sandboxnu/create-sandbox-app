@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { GetServerSideProps } from "next";
-import { Club } from "./api/club";
 import fetch from "node-fetch";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
+import { Club } from "../server/api/club";
 
 interface HomeProps {
   club: Club;
