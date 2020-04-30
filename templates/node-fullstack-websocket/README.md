@@ -1,6 +1,6 @@
 # Full stack web app with websockets
 
-## Quick Start
+## Installation
 
 1. [Get Docker](https://docs.docker.com/get-docker/) so we can automatically run and setup Postgres
 2. Make sure you have [node](https://nodejs.org/en/download/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed. `yarn -v` should be `1.x.x`. Do not get Yarn 2.
@@ -21,4 +21,11 @@
 - [TypeORM](https://typeorm.io/) lets us query Postgres easily and with Typescript validating our schema. 
 
 - [Docker](https://www.docker.com/products/docker-desktop) sets up a consistent Postgres environment on all developer's machines
+
+
+## File Structure
+
+`/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client.  [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
+
+`/backend` is the server that runs the REST API, websockets, and serves next.js. Each API resource gets a router file inside `/server/api`. These routers/controllers just deal with HTTP and pass along to Services, which do the business logic.
 
