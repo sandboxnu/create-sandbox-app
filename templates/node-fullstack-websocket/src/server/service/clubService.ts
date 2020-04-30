@@ -11,7 +11,8 @@ export async function getClub(): Promise<Club> {
 
 export async function createClub(clubInfo: CreateClub) {
   let club = new ClubModel();
-  club.name = "Sandbox"
-  club.rating = 10
+  club.name = clubInfo.name
+  club.rating = clubInfo.rating
   await club.save();
+  return club;
 }
