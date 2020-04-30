@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import fetch from "node-fetch";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
-import { Club } from "../types/api";
+import { Club } from "../../shared/types";
 
 interface HomeProps {
   club: Club;
@@ -46,6 +46,7 @@ export default function Home({ club }: HomeProps) {
 }
 
 // This gets called on every request and runs on the server
+// https://nextjs.org/docs/basic-features/data-fetching
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
   const res = await fetch(`http://localhost:3000/api/club`);
