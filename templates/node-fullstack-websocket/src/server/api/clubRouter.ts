@@ -1,6 +1,6 @@
 import { Router, Response, Request } from 'express';
-import { Club, CreateClub } from '../../shared/types';
-import { getClub, createClub } from "../service/ClubService";
+import { Club } from '../../shared/types';
+import { getClub, createClub } from "../service/clubService";
 
 var clubRouter = Router()
 

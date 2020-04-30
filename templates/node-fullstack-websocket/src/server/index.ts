@@ -13,7 +13,7 @@ import { db } from './db';
 import api from './api';
 
 const dev = process.env.NODE_ENV !== "production";
-const nextApp = next({ dev });
+const nextApp = next({ dev, dir: 'src/app' });
 const nextHandler = nextApp.getRequestHandler();
 
 nextApp.prepare().then(async () => {

@@ -4,6 +4,7 @@ import fetch from "node-fetch";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
 import { Club } from "../../shared/types";
+import {getClub} from "../../server/service/clubService"
 
 interface HomeProps {
   club: Club;
@@ -49,8 +50,7 @@ export default function Home({ club }: HomeProps) {
 // https://nextjs.org/docs/basic-features/data-fetching
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
-  const res = await fetch(`http://localhost:3000/api/club`);
-  const club: Club = await res.json();
+  const club: Club = await getClub()
 
   // Pass data to the page via props
   return { props: { club } };

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "nodemon",
-    "build": "next build && tsc --project ./server/tsconfig.json",
-    "start": "NODE_ENV=production node dist/index.js",
+    "build": "next build src/app && tsc",
+    "start": "NODE_ENV=production node dist/server/index.js",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up -d",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },
