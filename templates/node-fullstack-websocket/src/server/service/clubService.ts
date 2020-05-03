@@ -11,7 +11,6 @@ export async function getClubs(): Promise<Club[]> {
 }
 
 export async function createClub({ name, rating }: ClubCreateInput) {
-  console.log('hey')
   return prisma.club.create({
     data: {
       name, rating

@@ -18,7 +18,6 @@ clubRouter.get('/', async (req, res: Response<Club[]>) => {
 })
 
 clubRouter.post('/', async (req, res: Response<Club>) => {
-  console.log(req.body)
   try {
     const c = await createClub(req.body);
     res.status(201).json(c);
