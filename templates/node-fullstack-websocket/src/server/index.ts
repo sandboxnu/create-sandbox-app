@@ -7,7 +7,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import next from "next";
 import socketIO from "socket.io";
-import { bindSocketIO } from "./bindSocketIO";
+import websocketManager from "./websocketManager";
 import "reflect-metadata";
 import { createServer } from 'http';
 import api from './api';
@@ -21,7 +21,7 @@ nextApp.prepare().then(async () => {
   const server = createServer(expressApp);
 
   const io = socketIO(server);
-  bindSocketIO(io);
+  websocketManager.bindSocketIO(io);
 
   expressApp.use(bodyParser.json())
   expressApp.use('/api', api);

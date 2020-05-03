@@ -1,6 +1,8 @@
 import { Router, Response } from 'express';
 import { getClubs, createClub } from "../service/clubService";
 import { Club } from '@prisma/client';
+import websocketManager from '../websocketManager';
+import { WSMessageType } from '../../types';
 
 var clubRouter = Router()
 
@@ -20,8 +22,9 @@ clubRouter.get('/', async (req, res: Response<Club[]>) => {
 clubRouter.post('/', async (req, res: Response<Club>) => {
   try {
     const c = await createClub(req.body);
+    websocketManager.emitAll(WSMessageType.Refresh, null)
     res.status(201).json(c);
-  } catch(e) {
+  } catch (e) {
     res.status(500);
   }
 })

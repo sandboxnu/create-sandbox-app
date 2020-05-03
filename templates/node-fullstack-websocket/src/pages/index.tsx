@@ -5,6 +5,8 @@ import WebsocketDemo from "../components/WebsocketDemo";
 import { Club } from "@prisma/client";
 import axios from "axios";
 import ClubList from "../components/ClubList";
+import { socket } from "../components/socket";
+import { WSMessageType } from "../types";
 
 interface HomeProps {
   clubs: Club[];
@@ -16,12 +18,15 @@ async function getClubs(): Promise<Club[]> {
 // Plain old React functional component.
 export default function Home({ clubs }: HomeProps) {
   const [other, setOther] = useState<Club[]>([]);
-  useEffect(() => {
+  function refreshData() {
     // Runs on client side
     getClubs().then((c) => {
       setOther(c);
     });
-  }, []);
+  }
+
+  socket.on(WSMessageType.Refresh, refreshData);
+  useEffect(refreshData, []);
   return (
     <div>
       <Head>
@@ -47,7 +52,7 @@ export default function Home({ clubs }: HomeProps) {
       Websocket Demo:
       <br />
       <WebsocketDemo />
-      Try opening and closing this page in more tabs.
+      Try opening this page in another tab. Click Add a Club and watch it update on both tabs.
     </div>
   );
 }

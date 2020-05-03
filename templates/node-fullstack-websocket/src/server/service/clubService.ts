@@ -7,7 +7,7 @@ import { PrismaClient, Club, ClubCreateInput } from "@prisma/client"
 const prisma = new PrismaClient()
 
 export async function getClubs(): Promise<Club[]> {
-  return prisma.club.findMany({first: 5});
+  return prisma.club.findMany();
 }
 
 export async function createClub({ name, rating }: ClubCreateInput) {

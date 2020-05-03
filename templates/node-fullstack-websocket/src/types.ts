@@ -5,4 +5,7 @@
  * https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/advanced-usage-of-generated-types
  */
 
- export {}
+ export enum WSMessageType {
+   Count='count',
+   Refresh='refresh'
+ }
