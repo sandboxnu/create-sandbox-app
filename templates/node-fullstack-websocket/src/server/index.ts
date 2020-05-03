@@ -4,26 +4,26 @@
  * Do NOT write API routes here. Instead, use next.js file-system routing in /pages/api
  */
 import express from 'express';
+import bodyParser from 'body-parser';
 import next from "next";
 import socketIO from "socket.io";
 import { bindSocketIO } from "./bindSocketIO";
 import "reflect-metadata";
 import { createServer } from 'http';
-import { db } from './db';
 import api from './api';
 
 const dev = process.env.NODE_ENV !== "production";
-const nextApp = next({ dev, dir: 'src/app' });
+const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
 nextApp.prepare().then(async () => {
-  const connection = await db.connect();
   const expressApp = express();
   const server = createServer(expressApp);
 
   const io = socketIO(server);
   bindSocketIO(io);
 
+  expressApp.use(bodyParser.json())
   expressApp.use('/api', api);
 
   // Defer to next.js

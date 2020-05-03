@@ -1,0 +1,15 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Club {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  name     String
+  rating    Int
+}

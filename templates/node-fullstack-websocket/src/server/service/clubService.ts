@@ -2,17 +2,19 @@
  * Business logic in the Service!
  */
 
-import { ClubModel } from "../entity/ClubModel";
-import { Club, CreateClub } from "../../shared/types";
+// import { Club, CreateClub } from "../../shared/types";
+import { PrismaClient, Club, ClubCreateInput } from "@prisma/client"
+const prisma = new PrismaClient()
 
-export async function getClub(): Promise<Club> {
-  return ClubModel.findOne()
+export async function getClubs(): Promise<Club[]> {
+  return prisma.club.findMany({first: 5});
 }
 
-export async function createClub(clubInfo: CreateClub) {
-  let club = new ClubModel();
-  club.name = clubInfo.name
-  club.rating = clubInfo.rating
-  await club.save();
-  return club;
+export async function createClub({ name, rating }: ClubCreateInput) {
+  console.log('hey')
+  return prisma.club.create({
+    data: {
+      name, rating
+    }
+  });
 }

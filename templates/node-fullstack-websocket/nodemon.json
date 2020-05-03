@@ -1,5 +1,5 @@
 {
-  "watch": ["server"],
-  "exec": "ts-node src/server/index.ts",
+  "watch": ["src/server"],
+  "exec": "ts-node --project src/server/tsconfig.json src/server/index.ts",
   "ext": "js ts"
 }

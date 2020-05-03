@@ -1,23 +1,26 @@
 import Head from "next/head";
 import { GetServerSideProps } from "next";
-import fetch from "node-fetch";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
-import { Club } from "../../shared/types";
+import { Club } from "@prisma/client";
+import axios from "axios";
+import ClubList from "../components/ClubList";
 
 interface HomeProps {
-  club: Club;
+  clubs: Club[];
+}
+
+async function getClubs(): Promise<Club[]> {
+  return (await axios.get("http://localhost:3000/api/club")).data;
 }
 // Plain old React functional component.
-export default function Home({ club }: HomeProps) {
-  const [other, setOther] = useState<Club | false>(false);
+export default function Home({ clubs }: HomeProps) {
+  const [other, setOther] = useState<Club[]>([]);
   useEffect(() => {
-    // Runs on client sid
-    fetch("http://localhost:3000/api/club")
-      .then((r) => r.json())
-      .then((o: Club) => {
-        setOther(o);
-      });
+    // Runs on client side
+    getClubs().then((c) => {
+      setOther(c);
+    });
   }, []);
   return (
     <div>
@@ -26,16 +29,20 @@ export default function Home({ club }: HomeProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>Server side rendered:</div>
-      <div>
-        The club {club.name} has a {club.rating} rating
-      </div>
+      <ClubList clubs={clubs} />
       <br />
       <div>Client side fetch:</div>
-      <div>
-        {other
-          ? `The club ${other.name} has a ${other.rating} rating`
-          : "loading..."}
-      </div>
+      <ClubList clubs={other} />
+      <button
+        onClick={() =>
+          axios.post("/api/club", {
+            name: "Sandbox",
+            rating: 10,
+          })
+        }
+      >
+        Add a club
+      </button>
       <br />
       Websocket Demo:
       <br />
@@ -49,7 +56,7 @@ export default function Home({ club }: HomeProps) {
 // https://nextjs.org/docs/basic-features/data-fetching
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
-  const club: Club = await fetch("http://localhost:3000/api/club").then((r) => r.json())
+  const clubs: Club[] = await getClubs();
   // Pass data to the page via props
-  return { props: { club } };
+  return { props: { clubs } };
 };

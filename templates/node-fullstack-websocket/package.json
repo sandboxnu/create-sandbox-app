@@ -3,31 +3,33 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "nodemon",
-    "build": "next build src/app && tsc",
-    "start": "NODE_ENV=production node dist/server/index.js",
+    "build": "next build && tsc --project src/server/tsconfig.json",
+    "start": "NODE_ENV=production node dist/index.js",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up -d",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },
   "dependencies": {
+    "@prisma/client": "^2.0.0-beta.4",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "next": "9.3.5",
-    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.3",
-    "pg": "^8.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "reflect-metadata": "^0.1.13",
     "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0",
-    "typeorm": "^0.2.24"
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
+    "@prisma/cli": "^2.0.0-beta.4",
     "@types/express": "^4.17.6",
     "@types/node": "^13.13.2",
-    "@types/node-fetch": "^2.5.7",
     "@types/react": "^16.9.34",
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
+    "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
   }
 }
