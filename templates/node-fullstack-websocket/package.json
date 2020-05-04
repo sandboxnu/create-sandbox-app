@@ -6,7 +6,6 @@
     "dev": "concurrently -n \"server,app,api-client\" \"yarn workspace server dev\" \"yarn workspace app dev\" \"yarn workspace api-client dev\"",
     "build": "yarn workspace server build && yarn workspace app build",
     "start": "NODE_ENV=production node dist/index.js",
-    "migrate": "prisma migrate up --experimental && prisma generate",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up -d",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },

@@ -6,7 +6,6 @@
 2. Make sure you have [node](https://nodejs.org/en/download/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed. `yarn -v` should be `1.x.x`. Do not get Yarn 2.
 3. Run `yarn install` in this directory to get dependencies
 4. Run `yarn dev:db:up` to start the database via docker. `yarn dev:db:down` will stop it.
-5. Run `yarn migrate` to migrate the database and setup prisma client lib
 5. Start the app in development with `yarn dev`
 
 ## Technologies
