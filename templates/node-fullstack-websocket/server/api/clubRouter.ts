@@ -1,18 +1,14 @@
 import { Router, Response } from 'express';
-import { getClubs, createClub } from "../service/clubService";
-import { Club } from '@prisma/client';
+import { Club, prismaVersion, PrismaClient } from '@prisma/client';
 import websocketManager from '../websocketManager';
 import { WSMessageType } from 'shared';
 
-var clubRouter = Router()
+const prisma = new PrismaClient();
+const clubRouter = Router()
 
-/**
- * Routers (Controllers) should NOT handle business logic.
- * Pull info out of req and hand it over to a Service.
- */
 clubRouter.get('/', async (req, res: Response<Club[]>) => {
   try {
-    const c = await getClubs();
+    const c = await prisma.club.findMany();
     res.status(200).json(c);
   } catch (e) {
     res.status(500)
@@ -21,7 +17,8 @@ clubRouter.get('/', async (req, res: Response<Club[]>) => {
 
 clubRouter.post('/', async (req, res: Response<Club>) => {
   try {
-    const c = await createClub(req.body);
+    const { name, rating } = req.body;
+    const c = await prisma.club.create({ data: {name, rating }});
     websocketManager.emitAll(WSMessageType.Refresh, null)
     res.status(201).json(c);
   } catch (e) {

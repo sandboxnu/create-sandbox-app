@@ -28,6 +28,6 @@
 
 `/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client.  [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
 
-`/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`. These routers/controllers just deal with HTTP and pass along to Services, which do the business logic.
+`/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`.
 
 `/shared` is included in both app and server. Primary purpose is to share types for typescript, though it may also be possible to share utility functions.
