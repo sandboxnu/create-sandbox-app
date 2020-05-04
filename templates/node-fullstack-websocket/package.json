@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"server,app\" \"yarn workspace server dev\" \"yarn workspace app dev\"",
+    "dev": "concurrently -n \"server,app,api-client\" \"yarn workspace server dev\" \"yarn workspace app dev\" \"yarn workspace api-client dev\"",
     "build": "yarn workspace server build && yarn workspace app build",
     "start": "NODE_ENV=production node dist/index.js",
     "migrate": "prisma migrate up --experimental && prisma generate",
@@ -12,13 +12,12 @@
   },
   "workspaces": {
     "packages": [
-      "shared",
       "app",
-      "server"
+      "server",
+      "api-client"
     ]
   },
   "devDependencies": {
-    "@prisma/cli": "^2.0.0-beta.4",
     "concurrently": "^5.2.0"
   }
 }

@@ -1,4 +1,4 @@
-import { Club } from "@prisma/client";
+import { Club } from "api-client";
 
 export default function ClubList({ clubs }: { clubs: Club[] }) {
   return clubs.length > 0 ? (

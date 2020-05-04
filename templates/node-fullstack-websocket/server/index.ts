@@ -5,26 +5,33 @@ import websocketManager from "./websocketManager";
 import { createServer } from 'http';
 import { createProxyMiddleware } from 'http-proxy-middleware'
 import api from './api';
+import { createConnection } from 'typeorm';
 
+async function main() {
 
-const expressApp = express();
-const server = createServer(expressApp);
+  await createConnection();
 
-const io = socketIO(server);
-websocketManager.bindSocketIO(io);
+  const expressApp = express();
+  const server = createServer(expressApp);
 
-expressApp.use(bodyParser.json())
-expressApp.use('/api', api);
+  const io = socketIO(server);
+  websocketManager.bindSocketIO(io);
 
-// Proxy next frontend in dev
-if(process.env.NODE_ENV !== 'production') {
-  expressApp.use('/', createProxyMiddleware({ target: 'http://localhost:3001' }));
+  expressApp.use(bodyParser.json())
+  expressApp.use('/api', api);
+
+  // Proxy next frontend in dev
+  if (process.env.NODE_ENV !== 'production') {
+    expressApp.use('/', createProxyMiddleware({ target: 'http://localhost:3001' }));
+  }
+
+  server.listen(3000)
+  server.on('listening', () => {
+    console.log("> Ready on http://localhost:3000");
+  })
+  server.on('error', (err) => {
+    if (err) throw err;
+  });
 }
 
-server.listen(3000)
-server.on('listening', () => {
-  console.log("> Ready on http://localhost:3000");
-})
-server.on('error', (err) => {
-  if (err) throw err;
-});
+main().catch(e => console.log(e));

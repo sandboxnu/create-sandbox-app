@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "declaration": true,
+    "composite": true,
+    "strict": true,
+    "isolatedModules": true
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["**/*.ts"],
+  "references": [{"path": "../server"}]
+}
