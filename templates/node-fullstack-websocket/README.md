@@ -6,6 +6,7 @@
 2. Make sure you have [node](https://nodejs.org/en/download/) and [yarn](https://classic.yarnpkg.com/en/docs/install) installed. `yarn -v` should be `1.x.x`. Do not get Yarn 2.
 3. Run `yarn install` in this directory to get dependencies
 4. Run `yarn dev:db:up` to start the database via docker. `yarn dev:db:down` will stop it.
+5. Run `yarn migrate` to migrate the database and setup prisma client lib
 5. Start the app in development with `yarn dev`
 
 ## Technologies
@@ -27,5 +28,6 @@
 
 `/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client.  [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
 
-`/backend` is the server that runs the REST API, websockets, and serves next.js. Each API resource gets a router file inside `/server/api`. These routers/controllers just deal with HTTP and pass along to Services, which do the business logic.
+`/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`. These routers/controllers just deal with HTTP and pass along to Services, which do the business logic.
 
+`/shared` is included in both app and server. Primary purpose is to share types for typescript, though it may also be possible to share utility functions.

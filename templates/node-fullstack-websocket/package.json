@@ -6,6 +6,7 @@
     "dev": "concurrently -n \"server,app\" \"yarn workspace server dev\" \"yarn workspace app dev\"",
     "build": "yarn workspace server build && yarn workspace app build",
     "start": "NODE_ENV=production node dist/index.js",
+    "migrate": "prisma migrate up --experimental && prisma generate",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up -d",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },
@@ -17,6 +18,7 @@
     ]
   },
   "devDependencies": {
+    "@prisma/cli": "^2.0.0-beta.4",
     "concurrently": "^5.2.0"
   }
 }
