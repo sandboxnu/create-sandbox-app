@@ -9,3 +9,5 @@
    Count='count',
    Refresh='refresh'
  }
+
+ export const hello = 2;

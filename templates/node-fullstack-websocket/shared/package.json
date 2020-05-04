@@ -1,0 +1,7 @@
+{
+  "name": "shared",
+  "version": "0.1.0",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}

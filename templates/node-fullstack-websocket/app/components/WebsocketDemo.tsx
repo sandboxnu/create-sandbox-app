@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { socket } from "./socket";
-import { WSMessageType } from "../types";
+import { WSMessageType } from "shared";
 
 export default function WebsocketDemo() {
   const [count, setCount] = useState(0);

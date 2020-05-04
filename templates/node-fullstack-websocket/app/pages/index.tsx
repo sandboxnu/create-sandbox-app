@@ -6,7 +6,7 @@ import { Club } from "@prisma/client";
 import axios from "axios";
 import ClubList from "../components/ClubList";
 import { socket } from "../components/socket";
-import { WSMessageType } from "../types";
+import { WSMessageType } from "shared";
 
 interface HomeProps {
   clubs: Club[];
@@ -52,7 +52,9 @@ export default function Home({ clubs }: HomeProps) {
       Websocket Demo:
       <br />
       <WebsocketDemo />
-      Try opening this page in another tab. Click Add a Club and watch it update on both tabs.
+      Try opening this page in another tab
+      <br />
+      Click Add a Club and watch it update on both tabs.
     </div>
   );
 }

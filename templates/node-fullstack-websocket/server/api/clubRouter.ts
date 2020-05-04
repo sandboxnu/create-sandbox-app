@@ -2,7 +2,7 @@ import { Router, Response } from 'express';
 import { getClubs, createClub } from "../service/clubService";
 import { Club } from '@prisma/client';
 import websocketManager from '../websocketManager';
-import { WSMessageType } from '../../types';
+import { WSMessageType } from 'shared';
 
 var clubRouter = Router()
 

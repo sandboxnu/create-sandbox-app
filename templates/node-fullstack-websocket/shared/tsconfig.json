@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": "."
+  },
+  "include": ["index.ts"]
+}
