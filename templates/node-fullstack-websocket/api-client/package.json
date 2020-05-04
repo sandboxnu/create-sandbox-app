@@ -4,10 +4,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "tsc -b -w --preserveWatchOutput"
+    "dev": "yarn build -w --preserveWatchOutput",
+    "build": "tsc -b"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "server": "*"
+    "server": "*",
+    "typescript": "^3.8.3"
   }
 }
