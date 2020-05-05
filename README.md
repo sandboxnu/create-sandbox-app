@@ -1,7 +1,13 @@
-## Goals
+Create Sandbox App helps you setup and deploy the right tech stack for your needs. Avoid costly technical architecture mistakes and start building your project today. Give the CLI your requirements, and it'll scaffold all the starter code you need.
+
+## Why?
+Sandbox starts ~4 new projects from scratch each semester. Every project begins with a week to a month of deliberating and switching between technologies. Should we use Rails? What about Typescript? Redux? NextJS? NestJS? NuxtJS? 
+
+Not only is this a waste of time, we end up **making the same technical mistakes** semester after semester as each team makes their own architectural decisions. The tech stacks here are the result of what we've learned through the years, and should get our new projects on a happy path.
+
+## Principles
 - Convention over configuration.
-- Project requirements => tech stack
-- Well documented steps.
+- Well documented.
 
 ## What's in the box?
 - One command to setup, another to deploy.
