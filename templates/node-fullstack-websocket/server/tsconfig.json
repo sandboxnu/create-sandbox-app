@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "outDir": "../dist",
+    "outDir": "dist",
     "target": "es2017",
     "declaration": true,
     "declarationMap": true,

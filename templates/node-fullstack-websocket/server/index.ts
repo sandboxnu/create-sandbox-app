@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors';
 import bodyParser from 'body-parser';
 import socketIO from "socket.io";
 import websocketManager from "./websocketManager";
