@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
 import ClubList from "../components/ClubList";
 import { socket } from "../components/socket";
-import {API, Club } from 'api-client';
+import { API, Club } from "api-client";
 
 interface HomeProps {
   clubs: Club[];
@@ -12,7 +12,7 @@ interface HomeProps {
 
 // Plain old React functional component.
 export default function Home({ clubs }: HomeProps) {
-  const api = new API()
+  const api = new API();
   const [other, setOther] = useState<Club[]>([]);
   function refreshData() {
     // Runs on client side
@@ -21,7 +21,7 @@ export default function Home({ clubs }: HomeProps) {
     });
   }
 
-  socket.on('ref', refreshData);
+  socket.on("ref", refreshData);
   useEffect(refreshData, []);
   return (
     <div>
@@ -59,7 +59,7 @@ export default function Home({ clubs }: HomeProps) {
 // https://nextjs.org/docs/basic-features/data-fetching
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
-  const api = new API('http://localhost:3000')
+  const api = new API("http://localhost:3000");
   const clubs: Club[] = await api.club.index();
   // Pass data to the page via props
   return { props: { clubs } };

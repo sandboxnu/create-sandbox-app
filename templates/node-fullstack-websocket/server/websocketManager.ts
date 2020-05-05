@@ -5,7 +5,7 @@
 import { WSMessageType } from "./types";
 
 class WebsocketManager {
-  private io: SocketIO.Server
+  private io: SocketIO.Server;
   private connected: number = 0;
 
   bindSocketIO(io: SocketIO.Server) {
@@ -28,7 +28,7 @@ class WebsocketManager {
    * send message to everyone
    */
   emitAll(msgType: WSMessageType, msg: any) {
-    this.io.emit(msgType, msg)
+    this.io.emit(msgType, msg);
   }
 }
 export default new WebsocketManager();

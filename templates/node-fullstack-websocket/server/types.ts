@@ -1,5 +1,4 @@
-
 export enum WSMessageType {
-  Count='count',
-  Refresh='ref'
+  Count = "count",
+  Refresh = "ref",
 }

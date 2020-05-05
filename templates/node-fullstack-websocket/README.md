@@ -18,13 +18,12 @@
 
 - [Postgresql](https://www.postgresql.org/docs/11/index.html) is a very reliable and popular SQL database that is great for 99% of applications
 
-- [TypeORM](https://typeorm.io/) lets us query Postgres easily and with Typescript validating our schema. 
+- [TypeORM](https://typeorm.io/) lets us query Postgres easily and with Typescript validating our schema.
 
 - [Docker](https://www.docker.com/products/docker-desktop) sets up a consistent Postgres environment on all developer's machines
 
-
 ## File Structure
 
-`/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client.  [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
+`/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client. [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
 
 `/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`.
