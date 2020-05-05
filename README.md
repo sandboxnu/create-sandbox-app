@@ -1,9 +1,10 @@
 ## Goals
-- One command to setup, another to deploy.
 - Convention over configuration.
+- Project requirements => tech stack
 - Well documented steps.
 
 ## What's in the box?
+- One command to setup, another to deploy.
 - Monorepo
 - Express backend
 - React frontend
