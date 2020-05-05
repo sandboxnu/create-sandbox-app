@@ -3,7 +3,7 @@ Create Sandbox App helps you setup and deploy the right tech stack for your need
 ## Why?
 Sandbox starts ~4 new projects from scratch each semester. Every project begins with a week to a month of deliberating and switching between technologies. Should we use Rails? What about Typescript? Redux? NextJS? NestJS? NuxtJS? 
 
-Not only is this a waste of time, we end up **making the same technical mistakes** semester after semester as each team makes their own independent decisions. The tech stacks here are the result of what we've learned through the years, and should get our new projects on a happy path.
+Not only is this a waste of time, we end up **making the same technical mistakes** semester after semester as each team makes their own independent decisions. The tech stacks here are the result of what we've learned through the years, and should get our new projects on a happy path by avoiding our past mistakes.
 
 ## Principles
 - Convention over configuration.
