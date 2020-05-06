@@ -8,8 +8,18 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 import api from "./api";
 import { createConnection } from "typeorm";
 
+const DB_URL = process.env.DB_URL || "postgres://postgres@localhost:5432/dev";
+
 async function main() {
-  await createConnection();
+  await createConnection({
+    type: "postgres",
+    url: DB_URL,
+    synchronize: true,
+    logging: false,
+    entities: ["src/entity/**/*{.js,.ts}"],
+    migrations: ["src/migration/**/*{.js,.ts}"],
+    subscribers: ["src/subscriber/**/*{.js,.ts}"],
+  });
 
   const expressApp = express();
   const server = createServer(expressApp);
@@ -22,10 +32,7 @@ async function main() {
 
   // Proxy next frontend in dev
   if (process.env.NODE_ENV !== "production") {
-    expressApp.use(
-      "/",
-      createProxyMiddleware({ target: "http://localhost:3001" })
-    );
+    expressApp.use(createProxyMiddleware({ target: "http://localhost:3001" }));
   }
 
   server.listen(3000);

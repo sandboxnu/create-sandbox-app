@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
-    "start": "NODE_ENV=production node dist/index.js"
+    "start": "NODE_ENV=production node dist/src/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
