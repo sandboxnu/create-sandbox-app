@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { socket } from "./socket";
+import { WSMessageType } from "common";
 
 export default function WebsocketDemo() {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    socket.on("count", (count: number) => {
+    socket.on(WSMessageType.Count, (count: number) => {
       setCount(count);
     });
   }, []);

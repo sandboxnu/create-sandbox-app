@@ -3,20 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn workspace api-client build && concurrently -n \"server,app,api-client\" \"yarn workspace server dev\" \"yarn workspace app dev\" \"yarn workspace api-client dev\"",
-    "build": "yarn workspace server build && yarn workspace app build",
+    "dev": "concurrently -n \"common,server,app\" \"yarn workspace common dev\" \"yarn workspace server dev\" \"yarn workspace app dev\"",
+    "build": "yarn workspace common build && yarn workspace app build && yarn workspace server build",
     "start": "NODE_ENV=production node dist/index.js",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },
   "workspaces": {
     "packages": [
-      "app",
+      "common",
+      "api-client",
       "server",
-      "api-client"
+      "app"
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "concurrently": "^5.2.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",

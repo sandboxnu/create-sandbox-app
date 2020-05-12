@@ -1,15 +1,13 @@
 import Axios, { AxiosInstance } from "axios";
-import { ClubRoutes, Club } from "server/api/clubRouter";
-
-export type { Club };
+import { GetClubResponse, CreateClubParams, CreateClubResponse } from "common";
 
 export class API {
   private axios: AxiosInstance;
-  club: ClubRoutes = {
-    index: async () => {
+  club = {
+    index: async (): Promise<GetClubResponse> => {
       return (await this.axios.get("/api/club")).data;
     },
-    create: async (p) => {
+    create: async (p: CreateClubParams): Promise<CreateClubResponse> => {
       return (await this.axios.post("/api/club", p)).data;
     },
   };

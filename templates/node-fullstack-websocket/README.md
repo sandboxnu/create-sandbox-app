@@ -27,3 +27,7 @@
 `/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client. [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
 
 `/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`.
+
+`/api-client` is a library to wrap network calls to the api in a neater, **type-safe** interface.
+
+`/common` is where common code and types go. It is important into the other three packages.

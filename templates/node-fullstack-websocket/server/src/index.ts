@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express from "express";
 import "express-async-errors";
 import bodyParser from "body-parser";
@@ -7,6 +8,7 @@ import { createServer } from "http";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import api from "./api";
 import { createConnection } from "typeorm";
+import path from "path";
 
 const DB_URL = process.env.DB_URL || "postgres://postgres@localhost:5432/dev";
 
@@ -16,9 +18,9 @@ async function main() {
     url: DB_URL,
     synchronize: true,
     logging: false,
-    entities: ["src/entity/**/*{.js,.ts}"],
-    migrations: ["src/migration/**/*{.js,.ts}"],
-    subscribers: ["src/subscriber/**/*{.js,.ts}"],
+    entities: [path.resolve(__dirname, "entity/**/*{.js,.ts}")],
+    migrations: [path.resolve(__dirname, "migration/**/*{.js,.ts}")],
+    subscribers: [path.resolve(__dirname, "subscriber/**/*{.js,.ts}")],
   });
 
   const expressApp = express();

@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
 import ClubList from "../components/ClubList";
 import { socket } from "../components/socket";
-import { API, Club } from "api-client";
+import { API } from "api-client";
+import { Club, WSMessageType } from "common";
 
 interface HomeProps {
   clubs: Club[];
@@ -21,7 +22,7 @@ export default function Home({ clubs }: HomeProps) {
     });
   }
 
-  socket.on("ref", refreshData);
+  socket.on(WSMessageType.Refresh, refreshData);
   useEffect(refreshData, []);
   return (
     <div>

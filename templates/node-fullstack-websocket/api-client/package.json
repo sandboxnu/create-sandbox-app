@@ -1,15 +1,10 @@
 {
   "name": "api-client",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "dev": "yarn build -w --preserveWatchOutput",
-    "build": "tsc -b"
-  },
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.19.2",
-    "server": "*",
+    "common": "*",
     "typescript": "^3.8.3"
   }
 }
