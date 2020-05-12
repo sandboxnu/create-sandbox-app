@@ -1,5 +1,5 @@
 {
-  "watch": ["."],
-  "exec": "ts-node index.ts",
+  "watch": ["./src"],
+  "exec": "babel-node --root-mode upward -x '.js,.ts' src/index.ts",
   "ext": "js ts"
 }

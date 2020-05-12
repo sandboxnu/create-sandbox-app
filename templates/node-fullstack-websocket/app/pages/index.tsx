@@ -2,25 +2,22 @@ import Head from "next/head";
 import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
-import { Club } from "@prisma/client";
-import axios from "axios";
 import ClubList from "../components/ClubList";
 import { socket } from "../components/socket";
-import { WSMessageType } from "shared";
+import { API } from "api-client";
+import { Club, WSMessageType } from "common";
 
 interface HomeProps {
   clubs: Club[];
 }
 
-async function getClubs(): Promise<Club[]> {
-  return (await axios.get("http://localhost:3000/api/club")).data;
-}
 // Plain old React functional component.
 export default function Home({ clubs }: HomeProps) {
+  const api = new API();
   const [other, setOther] = useState<Club[]>([]);
   function refreshData() {
     // Runs on client side
-    getClubs().then((c) => {
+    api.club.index().then((c) => {
       setOther(c);
     });
   }
@@ -40,7 +37,7 @@ export default function Home({ clubs }: HomeProps) {
       <ClubList clubs={other} />
       <button
         onClick={() =>
-          axios.post("/api/club", {
+          api.club.create({
             name: "Sandbox",
             rating: 10,
           })
@@ -63,7 +60,8 @@ export default function Home({ clubs }: HomeProps) {
 // https://nextjs.org/docs/basic-features/data-fetching
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // Fetch data from external API
-  const clubs: Club[] = await getClubs();
+  const api = new API("http://localhost:3000");
+  const clubs: Club[] = await api.club.index();
   // Pass data to the page via props
   return { props: { clubs } };
 };
