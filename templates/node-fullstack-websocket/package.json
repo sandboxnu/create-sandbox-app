@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n \"common,server,app\" \"yarn workspace common dev\" \"yarn workspace server dev\" \"yarn workspace app dev\"",
+    "tsc": "yarn workspaces run tsc",
     "build": "yarn workspace common build && yarn workspace app build && yarn workspace server build",
     "start": "NODE_ENV=production node dist/index.js",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
