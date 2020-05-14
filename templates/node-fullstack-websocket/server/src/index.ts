@@ -31,7 +31,7 @@ async function main() {
   websocketManager.bindSocketIO(io(server.listener))
 
   await server.start();
-  console.log("> Ready on http://localhost:3002");
+  console.log("> Server up");
 }
 
 main().catch((e) => console.log(e));
