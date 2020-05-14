@@ -8,8 +8,7 @@
     "tsc": "yarn workspaces run tsc",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down",
-    "prod:build": "docker-compose -f infrastructure/prod/docker-compose.yml build",
-    "prod:start": "docker-compose -f infrastructure/prod/docker-compose.yml up -d",
+    "prod:start": "docker-compose -f infrastructure/prod/docker-compose.yml up --build -d",
     "prod:stop": "docker-compose -f infrastructure/prod/docker-compose.yml down"
   },
   "workspaces": {

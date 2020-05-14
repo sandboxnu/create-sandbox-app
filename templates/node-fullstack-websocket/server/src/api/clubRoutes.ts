@@ -28,9 +28,9 @@ export const clubRoutes: ServerRoute[] = [
     options: {
       validate: {
         payload: Joi.object({
-          name: Joi.string(),
-          rating: Joi.number(),
-        }),
+          name: Joi.string().required(),
+          rating: Joi.number().required(),
+        }).required(),
       }
     }
   }
