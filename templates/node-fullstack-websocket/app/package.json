@@ -1,15 +1,12 @@
 {
-  "name": "app",
+  "name": "@template/app",
   "version": "0.1.0",
   "scripts": {
     "dev": "next -p 3001",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 3001"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.9.0",
-    "common": "*",
-    "api-client": "*",
     "axios": "^0.19.2",
     "next": "^9.4.0",
     "next-compose-plugins": "^2.2.0",
@@ -19,6 +16,8 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
+    "@template/common": "*",
+    "@template/api-client": "*",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "@types/socket.io-client": "^1.4.32",

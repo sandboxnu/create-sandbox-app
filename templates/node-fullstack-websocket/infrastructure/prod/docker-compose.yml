@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: app/Dockerfile
+    environment:
+      - API_URL=http://server:3000
+  server:
+    build:
+      context: ../../
+      dockerfile: server/Dockerfile
+    env_file: ./server.env
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443

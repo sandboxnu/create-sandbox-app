@@ -1,7 +1,11 @@
 import Axios, { AxiosInstance } from "axios";
-import { GetClubResponse, CreateClubParams, CreateClubResponse } from "common";
+import {
+  GetClubResponse,
+  CreateClubParams,
+  CreateClubResponse,
+} from "@template/common";
 
-export class API {
+class APIClient {
   private axios: AxiosInstance;
   club = {
     index: async (): Promise<GetClubResponse> => {
@@ -12,6 +16,9 @@ export class API {
     },
   };
   constructor(baseURL: string = "") {
+    console.log("baseURL", baseURL);
     this.axios = Axios.create({ baseURL: baseURL });
   }
 }
+
+export const API = new APIClient(process.env.API_URL);

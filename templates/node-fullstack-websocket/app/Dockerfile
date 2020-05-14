@@ -6,18 +6,18 @@ WORKDIR /
 COPY package.json .
 COPY yarn.lock .
 COPY babel.config.js .
-COPY server/package.json server/package.json
+COPY app/package.json app/package.json
+COPY api-client/package.json api-client/package.json
 COPY common/package.json common/package.json
-
 
 # Install at root level
 RUN yarn install --pure-lockfile --non-interactive
 
 # Get src files
-COPY server/src server/src
+COPY app app
+COPY api-client api-client
 COPY common common
 
-# Build server and common dependency
 RUN yarn workspaces run build
 
 
@@ -29,17 +29,15 @@ RUN yarn workspaces run build
 # COPY package.json .
 # COPY yarn.lock .
 
-# COPY --from=build /server/package.json /server/package.json
-# COPY --from=build /server/dist /server/dist
-# COPY --from=build /common/package.json /common/package.json
-# COPY --from=build /common/dist /common/dist
+# COPY --from=build /app/package.json /app/package.json
+# COPY --from=build /app/.next /app/.next
 
 ENV NODE_ENV production
 
 # RUN yarn install --pure-lockfile --non-interactive --production
 
-WORKDIR /server
+WORKDIR /app
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["npm", "start"]

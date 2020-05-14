@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"common,server,app\" \"yarn workspace common dev\" \"yarn workspace server dev\" \"yarn workspace app dev\"",
+    "dev": "concurrently -n \"common,server,app\" \"yarn workspace @template/common dev\" \"yarn workspace @template/server dev\" \"yarn workspace @template/app dev\"",
     "tsc": "yarn workspaces run tsc",
-    "build": "yarn workspace common build && yarn workspace app build && yarn workspace server build",
-    "start": "NODE_ENV=production node dist/index.js",
+    "build": "yarn workspaces run build",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
   },
@@ -23,6 +22,8 @@
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
     "concurrently": "^5.2.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",

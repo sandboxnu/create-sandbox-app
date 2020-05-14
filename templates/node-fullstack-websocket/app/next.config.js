@@ -21,7 +21,7 @@ function withCustomWebpack(config = {}) {
 }
 
 const plugins = [
-  [withTM, { transpileModules: ["common", "api-client"] }],
+  [withTM, { transpileModules: ["@template"] }],
   [withCustomWebpack],
 ];
 

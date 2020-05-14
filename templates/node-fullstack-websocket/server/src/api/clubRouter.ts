@@ -6,7 +6,7 @@ import {
   CreateClubParams,
   WSMessageType,
   CreateClubResponse,
-} from "common";
+} from "@template/common";
 import { validate, schema as Validation, Joi } from "express-validation";
 
 const clubRouter = Router();

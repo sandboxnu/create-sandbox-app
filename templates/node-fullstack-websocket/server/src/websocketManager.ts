@@ -2,7 +2,7 @@
  * singleton websocket manager to wrap socketio and make it accessible in api routers
  */
 
-import { WSMessageType } from "common";
+import { WSMessageType } from "@template/common";
 
 class WebsocketManager {
   private io: SocketIO.Server;

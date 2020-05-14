@@ -1,4 +1,4 @@
-import { Club } from "common";
+import { Club } from "@template/common";
 
 export default function ClubList({ clubs }: { clubs: Club[] }) {
   return clubs.length > 0 ? (
