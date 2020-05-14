@@ -7,10 +7,13 @@
 3. Run `yarn install` in this directory to get dependencies
 4. Run `yarn dev:db:up` to start the database via docker. `yarn dev:db:down` will stop it.
 5. Start the app in development with `yarn dev`
+6. Visit the app at http://localhost:3000
 
 ## Technologies
 
 - [Next.js](https://nextjs.org/docs/getting-started) lets us do server-side and client-side React rendering, as well as write backend API endpoints. It also gives us developer ergonomics like hot reload in dev.
+
+- [hapi.js](https://hapi.dev) runs our backend http api. It is similar to express, but with integrated support for authentication, validation, and testing.
 
 - [Socket.io](https://socket.io/docs/) manages websocket communication on server and client
 
@@ -30,4 +33,6 @@
 
 `/api-client` is a library to wrap network calls to the api in a neater, **type-safe** interface.
 
-`/common` is where common code and types go. It is important into the other three packages.
+`/common` is where common code and types go. It is imported into the other three packages.
+
+`/infrastructure` is for docker and other deployment files. You can ignore it.
