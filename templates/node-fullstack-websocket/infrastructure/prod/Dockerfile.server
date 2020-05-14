@@ -21,7 +21,8 @@ COPY common common
 RUN yarn workspaces run build
 
 
-# Production container
+# LINES COMMENTED OUT ENABLE SMALLER FINAL IMAGE SIZE
+# Production container.
 # FROM node:12-alpine
 
 # WORKDIR /

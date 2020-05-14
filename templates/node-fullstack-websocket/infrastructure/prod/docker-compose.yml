@@ -4,14 +4,16 @@ services:
   app:
     build:
       context: ../../
-      dockerfile: app/Dockerfile
+      dockerfile: infrastructure/prod/Dockerfile.app
     environment:
       - API_URL=http://server:3000
+    restart: always
   server:
     build:
       context: ../../
-      dockerfile: server/Dockerfile
+      dockerfile: infrastructure/prod/Dockerfile.server
     env_file: ./server.env
+    restart: always
   nginx:
     image: nginx:latest
     volumes:
@@ -19,3 +21,4 @@ services:
     ports:
       - 80:80
       - 443:443
+    restart: always

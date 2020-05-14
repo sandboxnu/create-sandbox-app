@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "concurrently -n \"common,server,app\" \"yarn workspace @template/common dev\" \"yarn workspace @template/server dev\" \"yarn workspace @template/app dev\"",
     "tsc": "yarn workspaces run tsc",
-    "build": "yarn workspaces run build",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
-    "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down"
+    "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down",
+    "prod:build": "docker-compose -f infrastructure/prod/docker-compose.yml build",
+    "prod:start": "docker-compose -f infrastructure/prod/docker-compose.yml up -d",
+    "prod:stop": "docker-compose -f infrastructure/prod/docker-compose.yml down"
   },
   "workspaces": {
     "packages": [
