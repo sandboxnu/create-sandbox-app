@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n \"common,server,app\" \"yarn workspace @template/common dev\" \"yarn workspace @template/server dev\" \"yarn workspace @template/app dev\"",
+    "dev": "concurrently -n \"common,server,app,proxy\" \"yarn workspace @template/common dev\" \"yarn workspace @template/server dev\" \"yarn workspace @template/app dev\" \"yarn dev:proxy\"",
+    "dev:proxy": "yarn http-proxy -p 3000 /api=localhost:3002/api 3001",
     "tsc": "yarn workspaces run tsc",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down",
@@ -27,6 +28,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "concurrently": "^5.2.0",
+    "http-proxy-cli": "^2.1.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"

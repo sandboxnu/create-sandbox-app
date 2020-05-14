@@ -2,7 +2,7 @@ This is for deploying production to a single machine using docker.
 
 Running the docker-compose file will setup:
 
-- API server on port 3000
+- API server on port 3002
 - Frontend app server on port 3001
 - NGINX on port 80 reverse proxying
 

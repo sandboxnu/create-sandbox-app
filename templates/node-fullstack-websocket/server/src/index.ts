@@ -1,14 +1,10 @@
 import "reflect-metadata";
-import express from "express";
-import "express-async-errors";
-import bodyParser from "body-parser";
-import socketIO from "socket.io";
-import websocketManager from "./websocketManager";
-import { createServer } from "http";
-import { createProxyMiddleware } from "http-proxy-middleware";
-import api from "./api";
 import { createConnection } from "typeorm";
 import path from "path";
+import Hapi from '@hapi/hapi';
+import io from 'socket.io'
+import { clubRoutes } from "./api/clubRoutes";
+import websocketManager from "./websocketManager";
 
 const DB_URL = process.env.DB_URL || "postgres://postgres@localhost:5432/dev";
 
@@ -23,27 +19,19 @@ async function main() {
     subscribers: [path.resolve(__dirname, "subscriber/**/*{.js,.ts}")],
   });
 
-  const expressApp = express();
-  const server = createServer(expressApp);
+  const server = Hapi.server({
+    port: 3002,
+    host: 'localhost'
+  })
 
-  const io = socketIO(server);
-  websocketManager.bindSocketIO(io);
+  // Add routes
+  server.route(clubRoutes)
 
-  expressApp.use(bodyParser.json());
-  expressApp.use("/api", api);
+  // Bind socketio to http server
+  websocketManager.bindSocketIO(io(server.listener))
 
-  // Proxy next frontend in dev
-  if (process.env.NODE_ENV !== "production") {
-    expressApp.use(createProxyMiddleware({ target: "http://localhost:3001" }));
-  }
-
-  server.listen(3000);
-  server.on("listening", () => {
-    console.log("> Ready on http://localhost:3000");
-  });
-  server.on("error", (err) => {
-    if (err) throw err;
-  });
+  await server.start();
+  console.log("> Ready on http://localhost:3002");
 }
 
 main().catch((e) => console.log(e));

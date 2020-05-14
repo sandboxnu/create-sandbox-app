@@ -16,7 +16,6 @@ class APIClient {
     },
   };
   constructor(baseURL: string = "") {
-    console.log("baseURL", baseURL);
     this.axios = Axios.create({ baseURL: baseURL });
   }
 }

@@ -21,12 +21,14 @@ export default function Home({ clubs }: HomeProps) {
     });
   }
 
-  socket.on(WSMessageType.Refresh, refreshData);
+  socket.on(WSMessageType.Refresh, ()=>{
+    console.log('ref')
+    refreshData()});
   useEffect(refreshData, []);
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Create Sandbox App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>Server side rendered:</div>

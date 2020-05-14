@@ -6,7 +6,7 @@ services:
       context: ../../
       dockerfile: infrastructure/prod/Dockerfile.app
     environment:
-      - API_URL=http://server:3000
+      - API_URL=http://server:3002
     restart: always
   server:
     build:
