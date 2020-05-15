@@ -36,3 +36,7 @@
 `/common` is where common code and types go. It is imported into the other three packages.
 
 `/infrastructure` is for docker and other deployment files. You can ignore it.
+
+## Style
+
+[Prettier](https://prettier.io/), a highly opinionated code formatter, runs right before you commit to git. So don't worry about formatting your code! Prettier will clean it all up. You can also get the Prettier extension in most IDEs, or run `yarn pretty-quick` if you want to.
