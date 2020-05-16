@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n \"common,server,app,proxy\" \"yarn workspace @template/common dev\" \"yarn workspace @template/server dev\" \"yarn workspace @template/app dev\" \"yarn dev:proxy\"",
-    "dev:proxy": "yarn http-proxy -p 3000 /api=localhost:3002/api /socket.io=localhost:3002/socket.io 3001",
+    "dev:proxy": "node infrastructure/dev/devProxy.js",
     "tsc": "yarn workspaces run tsc",
     "dev:db:up": "docker-compose -f infrastructure/dev/docker-compose.yml up",
     "dev:db:down": "docker-compose -f infrastructure/dev/docker-compose.yml down",
@@ -27,7 +27,9 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "concurrently": "^5.2.0",
+    "express": "^4.17.1",
     "http-proxy-cli": "^2.1.0",
+    "http-proxy-middleware": "^1.0.3",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1"
