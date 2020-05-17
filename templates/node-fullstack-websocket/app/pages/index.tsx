@@ -21,10 +21,12 @@ export default function Home({ clubs }: HomeProps) {
     });
   }
 
-  socket.on(WSMessageType.Refresh, ()=>{
-    console.log('ref')
-    refreshData()});
-  useEffect(refreshData, []);
+  useEffect(() => {
+    refreshData();
+    socket.on(WSMessageType.Refresh, () => {
+      refreshData();
+    });
+  }, []);
   return (
     <div>
       <Head>
