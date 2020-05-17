@@ -14,6 +14,6 @@ module.exports = function (api) {
       "@babel/preset-typescript",
     ],
     plugins: [],
-    babelrcRoots: [".", "server"],
+    babelrcRoots: [".", "server", "app"],
   };
 };
