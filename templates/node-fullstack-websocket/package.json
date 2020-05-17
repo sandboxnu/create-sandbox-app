@@ -14,10 +14,7 @@
   },
   "workspaces": {
     "packages": [
-      "common",
-      "api-client",
-      "server",
-      "app"
+      "packages/*"
     ]
   },
   "devDependencies": {
@@ -42,8 +39,7 @@
   },
   "jest": {
     "projects": [
-      "<rootDir>/server",
-      "<rootDir>/app"
+      "<rootDir>/packages/*"
     ]
   }
 }

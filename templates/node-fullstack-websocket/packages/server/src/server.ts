@@ -1,23 +1,22 @@
 import "reflect-metadata";
-import Hapi from '@hapi/hapi';
-import io from 'socket.io'
+import Hapi from "@hapi/hapi";
+import io from "socket.io";
 import { clubRoutes } from "./api/clubRoutes";
 import websocketManager from "./websocketManager";
 
-
 const server = Hapi.server({
   port: 3002,
-  host: 'localhost'
-})
+  host: "localhost",
+});
 // Add routes
-server.route(clubRoutes)
+server.route(clubRoutes);
 
 // Bind socketio to http server
-websocketManager.bindSocketIO(io(server.listener))
+websocketManager.bindSocketIO(io(server.listener));
 
 // Good for testing
 export async function init() {
-  await server.initialize()
+  await server.initialize();
   return server;
 }
 
@@ -25,5 +24,5 @@ export async function init() {
 export async function start() {
   await server.start();
   console.log("> Server up");
-  return server
+  return server;
 }

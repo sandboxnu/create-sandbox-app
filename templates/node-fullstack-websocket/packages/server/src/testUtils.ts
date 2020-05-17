@@ -21,15 +21,15 @@ export function setup(): () => Server {
   beforeEach(async () => {
     server = await init();
     // clear db data
-    await connection.synchronize(true)
+    await connection.synchronize(true);
   });
 
   afterEach(async () => {
     await server.stop();
-  })
+  });
 
   afterAll(async () => {
-    await connection.close()
-  })
+    await connection.close();
+  });
   return () => server;
 }

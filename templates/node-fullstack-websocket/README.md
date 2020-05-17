@@ -27,15 +27,23 @@
 
 ## File Structure
 
-`/app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client. [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
+Source code is in the `packages` folder.
 
-`/server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`.
+`app` is a the next.js app. Routing is done using the file system. For example, the page `/app/pages/xyz.tsx` would be served at `domain.com/xyz`. Pages are rendered server-side and hydrated client side. Data fetching can happen on the server or client. [Learn more](https://nextjs.org/docs/basic-features/data-fetching)
 
-`/api-client` is a library to wrap network calls to the api in a neater, **type-safe** interface.
+`server` is the server that runs the REST API and websockets. Each API resource gets a router file inside `/server/api`.
 
-`/common` is where common code and types go. It is imported into the other three packages.
+`api-client` is a library to wrap network calls to the api in a neater, **type-safe** interface.
 
-`/infrastructure` is for docker and other deployment files. You can ignore it.
+`common` is where common code and types go. It is imported into the other three packages.
+
+The `infrastructure` folder is for docker and other deployment files. You can mostly ignore it.
+
+## Developing
+
+Run `yarn dev` at root level to get everything running and hot-reloading. `yarn test` at root level runs all tests, but you can also selectively run tests by running `yarn test` while inside a package.
+
+Your IDE should do type-checking for you. You can run type-checks manually with `yarn tsc`.
 
 ## Style
 
