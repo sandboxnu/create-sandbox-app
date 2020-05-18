@@ -14,12 +14,6 @@ function withCustomWebpack(config = {}) {
     if (babelRule) {
       babelRule.include.push(path.resolve("../"));
     }
-
-    // Ignore test files
-    config.plugins.push(
-      new webpack.IgnorePlugin({ resourceRegExp: /test.tsx/ })
-    );
-    console.log(config.plugins);
     return config;
   };
 
