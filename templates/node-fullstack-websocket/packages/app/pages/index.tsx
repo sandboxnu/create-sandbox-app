@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 import WebsocketDemo from "../components/WebsocketDemo";
 import ClubList from "../components/ClubList";
-import { socket } from "../components/socket";
+import { socket } from "../utils/socket";
 import { API } from "@template/api-client";
 import { Club, WSMessageType } from "@template/common";
 
