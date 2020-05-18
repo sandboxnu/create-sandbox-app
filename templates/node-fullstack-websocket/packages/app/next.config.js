@@ -1,10 +1,9 @@
 const path = require("path");
 const withTM = require("next-transpile-modules");
 const withPlugins = require("next-compose-plugins");
+const webpack = require("webpack");
 
 function withCustomWebpack(config = {}) {
-  const { webpack } = config;
-
   config.webpack = (config, ...rest) => {
     // allow other packages to be built with babel
     const babelRule = config.module.rules.find((rule) =>
@@ -16,6 +15,11 @@ function withCustomWebpack(config = {}) {
       babelRule.include.push(path.resolve("../"));
     }
 
+    // Ignore test files
+    config.plugins.push(
+      new webpack.IgnorePlugin({ resourceRegExp: /test.tsx/ })
+    );
+    console.log(config.plugins);
     return config;
   };
 

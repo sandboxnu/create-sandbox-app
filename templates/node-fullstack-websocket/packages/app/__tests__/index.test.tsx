@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./index";
+import Home from "../pages/index";
 import { render, screen, waitFor } from "@testing-library/react";
 
 jest.mock("@template/api-client", () => ({
