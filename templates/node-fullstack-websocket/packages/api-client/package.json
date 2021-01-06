@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "@template/common": "*",
     "typescript": "^3.8.3"
   },
